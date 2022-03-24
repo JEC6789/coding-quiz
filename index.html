@@ -1,0 +1,86 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Coding Quiz!</title>
+</head>
+<body>
+    <header>
+        <button type="button" class="view-high-scores">View high scores</button>
+        <div>Time: <span class="timer">0</span></div>
+    </header>
+    <article id="starting-page" class="">
+        <h1>Coding Quiz Challenge</h1>
+        <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+        <button type="button">Start Quiz</button>
+    </article>
+    <article id="question-1" class="display-none">
+        <h1>Commonly used data types do not include:</h1>
+        <ul>
+            <li class="wrong">1. strings</li>
+            <li class="right">2. alerts</li>
+            <li class="wrong">3. booleans</li>
+            <li class="wrong">4. numbers</li>
+        </ul>
+    </article>
+    <article id="question-2" class="display-none">
+        <h1>The condition in an if / else statement is enclosed with ________.</h1>
+        <ul>
+            <li class="wrong">1. quotes</li>
+            <li class="wrong">2. curly brackets</li>
+            <li class="right">3. parentheses</li>
+            <li class="wrong">4. square brackets</li>
+        </ul>
+    </article>
+    <article id="question-3" class="display-none">
+        <h1>Arrays in JavaScript can be used to store ________.</h1>
+        <ul>
+            <li class="wrong">1. numbers and strings</li>
+            <li class="wrong">2. other arrays</li>
+            <li class="wrong">3. booleans</li>
+            <li class="right">4. all of the above</li>
+        </ul>
+    </article>
+    <article id="question-4" class="display-none">
+        <h1>String values must be enclosed within ________ when being assigned to variables.</h1>
+        <ul>
+            <li class="wrong">1. commas</li>
+            <li class="wrong">2. curly brackets</li>
+            <li class="right">3. quotes</li>
+            <li class="wrong">4. parentheses</li>
+        </ul>
+    </article>
+    <article id="question-5" class="display-none">
+        <h1>A very useful tool used during development and debugging for printing content to the debugger is:</h1>
+        <ul>
+            <li class="wrong">1. JavaScript</li>
+            <li class="wrong">2. terminal / bash</li>
+            <li class="wrong">3. for loops</li>
+            <li class="right">4. console.log</li>
+        </ul>
+    </article>
+    <article id="finish-screen" class="display-none">
+        <h1>All done!</h1>
+        <p>Your final score is <span class="score">0</span>.</p>
+        <form>
+            <label for="name">Enter initials:</label>
+            <input type="text" name="name">
+            <button type="submit">Submit</button>
+        </form>
+    </article>
+    <article id="high-scores" class="display-none">
+        <h1>High scores</h1>
+        <ol>
+            <li>Placeholder - 69</li>
+            <li>Placeholder - 42</li>
+        </ol>
+        <section>
+            <button type="button">Go back</button>
+            <button type="button">Clear high scores</button>
+        </section>
+    </article>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>

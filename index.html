@@ -8,13 +8,13 @@
 </head>
 <body>
     <header>
-        <button type="button" class="view-high-scores">View high scores</button>
+        <button type="button" id="view-high-scores">View high scores</button>
         <div>Time: <span class="timer">0</span></div>
     </header>
     <article id="starting-page" class="">
         <h1>Coding Quiz Challenge</h1>
         <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-        <button type="button">Start Quiz</button>
+        <button type="button" id="start">Start Quiz</button>
     </article>
     <article id="question-1" class="display-none">
         <h1>Commonly used data types do not include:</h1>
@@ -77,8 +77,8 @@
             <li>Placeholder - 42</li>
         </ol>
         <section>
-            <button type="button">Go back</button>
-            <button type="button">Clear high scores</button>
+            <button type="button" id="go-back">Go back</button>
+            <button type="button" id="clear">Clear high scores</button>
         </section>
     </article>
     <script src="./assets/js/script.js"></script>

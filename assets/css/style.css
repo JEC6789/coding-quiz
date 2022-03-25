@@ -46,18 +46,18 @@ button {
     width: fit-content;
 }
 
-button:not(.view-high-scores), ul li {
+button:not(#view-high-scores), ul li {
     color: #fff;
     background-color: #4f007f;
     border-radius: 5px;
     padding: 10px 15px;
 }
 
-button:not(.view-high-scores):hover, ul li:hover {
+button:not(#view-high-scores):hover, ul li:hover {
     background-color: #7700bf;
 }
 
-button.view-high-scores {
+button#view-high-scores {
     color: #c7f;
     background: none;
 }

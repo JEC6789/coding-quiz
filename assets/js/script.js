@@ -1,12 +1,9 @@
-var bodyEl = document.querySelector("body");
-var articleEl = document.querySelector("article");
-var startingPageEl = document.querySelector("#starting-page");
-var question2El = document.querySelector("#question-2");
-var question3El = document.querySelector("#question-3");
-var question4El = document.querySelector("#question-4");
-var question5El = document.querySelector("#question-5");
+var bodyEl = document.querySelector("body");//
+var startingPageEl = document.querySelector("#starting-page");//
+var questionContainerEl = document.querySelector("#question-container");
 var finishScreenEl = document.querySelector("#finish-screen");
-var highScoreEl = document.querySelector("#high-scores")
+var formEl = document.querySelector("#submit-score");//
+var highScoreEl = document.querySelector("#high-scores");//
 /*var rightOrWrong = document.createElement("h2");
 
 rightOrWrong.textContent = "Correct!";
@@ -17,18 +14,42 @@ var buttonHandler = function(event) {
     var targetEl = event.target;
 
     if (targetEl.matches("#view-high-scores")) {
-        articleEl.className = "display-none";
+        startingPageEl.className = "display-none";
+        questionContainerEl.className = "display-none";
         highScoreEl.classList.remove("display-none");
     }
     else if (targetEl.matches("#go-back")) {
         highScoreEl.className = "display-none";
         startingPageEl.classList.remove("display-none");
     }
+    else if (targetEl.matches("#start")) {
+        startingPageEl.className = "display-none";
+        questionContainerEl.classList.remove("display-none");
+    }
 };
 
 var submitScore = function() {
     event.preventDefault();
+    var nameInput = document.querySelector("input[name='name']").value;
+    var scoreListEl = document.querySelector("#score-list");
+
+    if (!nameInput) {
+        alert("You need to provide your initials in order to submit your score!");
+        return false;
+    }
+
+    formEl.reset();
+
+    var scoreItem = {
+        name: nameInput,
+        //score: variableName
+    };
+
+    var scoreItemEl = document.createElement("li");
+    scoreItemEl.setAttribute("score", scoreItem.score);
+    scoreItemEl.textContent = scoreItem.name + " - " + scoreItem.score;
+    scoreListEl.appendChild(scoreItemEl);
 };
 
 bodyEl.addEventListener("click", buttonHandler);
-//finishScreenEl.addEventListener("submit", submitScore);
+formEl.addEventListener("submit", submitScore);

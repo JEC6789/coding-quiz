@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,7 +17,7 @@
         <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
         <button type="button" id="start">Start Quiz</button>
     </article>
-    <article id="question-1" class="display-none">
+    <article id="question-container" class="display-none">
         <h1>Commonly used data types do not include:</h1>
         <ul>
             <li class="wrong">1. strings</li>
@@ -64,7 +65,7 @@
     <article id="finish-screen" class="display-none">
         <h1>All done!</h1>
         <p>Your final score is <span class="score">0</span>.</p>
-        <form>
+        <form id="submit-score">
             <label for="name">Enter initials:</label>
             <input type="text" name="name">
             <button type="submit">Submit</button>
@@ -72,10 +73,7 @@
     </article>
     <article id="high-scores" class="display-none">
         <h1>High scores</h1>
-        <ol>
-            <li>Placeholder - 69</li>
-            <li>Placeholder - 42</li>
-        </ol>
+        <ol id="score-list"></ol>
         <section>
             <button type="button" id="go-back">Go back</button>
             <button type="button" id="clear">Clear high scores</button>

@@ -1,14 +1,18 @@
-var bodyEl = document.querySelector("body");//
-var startingPageEl = document.querySelector("#starting-page");//
+var bodyEl = document.querySelector("body");
+var startingPageEl = document.querySelector("#starting-page");
 var questionContainerEl = document.querySelector("#question-container");
+var checkAnswerEl = document.createElement("h2");
 var finishScreenEl = document.querySelector("#finish-screen");
-var formEl = document.querySelector("#submit-score");//
-var highScoreEl = document.querySelector("#high-scores");//
-/*var rightOrWrong = document.createElement("h2");
-
-rightOrWrong.textContent = "Correct!";
-
-question2El.appendChild(rightOrWrong);*/
+var formEl = document.querySelector("#submit-score");
+var highScoreEl = document.querySelector("#high-scores");
+var questionContent = [
+    "<h1>Commonly used data types do not include:</h1><ul><li class='wrong'>1. strings</li><li class='right'>2. alerts</li><li class='wrong'>3. booleans</li><li class='wrong'>4. numbers</li></ul>",
+    "<h1>The condition in an if / else statement is enclosed with ________.</h1><ul><li class='wrong'>1. quotes</li><li class='wrong'>2. curly brackets</li><li class='right'>3. parentheses</li><li class='wrong'>4. square brackets</li></ul>",
+    "<h1>Arrays in JavaScript can be used to store ________.</h1><ul><li class='wrong'>1. numbers and strings</li><li class='wrong'>2. other arrays</li><li class='wrong'>3. booleans</li><li class='right'>4. all of the above</li></ul>",
+    "<h1>String values must be enclosed within ________ when being assigned to variables.</h1><ul><li class='wrong'>1. commas</li><li class='wrong'>2. curly brackets</li><li class='right'>3. quotes</li><li class='wrong'>4. parentheses</li></ul>",
+    "<h1>A very useful tool used during development and debugging for printing content to the debugger is:</h1><ul><li class='wrong'>1. JavaScript</li><li class='wrong'>2. terminal / bash</li><li class='wrong'>3. for loops</li><li class='right'>4. console.log</li></ul>"
+];
+var timeLeft = 0;
 
 var buttonHandler = function(event) {
     var targetEl = event.target;
@@ -25,7 +29,40 @@ var buttonHandler = function(event) {
     else if (targetEl.matches("#start")) {
         startingPageEl.className = "display-none";
         questionContainerEl.classList.remove("display-none");
+        quizHandler();
     }
+    else if (targetEl.matches(".right")) {
+        checkAnswerEl.remove();
+        checkAnswerEl.textContent = "Correct!";
+        questionContainerEl.appendChild(checkAnswerEl);
+    }
+    else if (targetEl.matches(".wrong")) {
+        checkAnswerEl.remove();
+        checkAnswerEl.textContent = "Wrong!";
+        questionContainerEl.appendChild(checkAnswerEl);
+        timeLeft = timeLeft - 10;
+    }
+};
+
+var quizHandler = function() {
+    timer();
+    questionContainerEl.innerHTML = questionContent[0];
+};
+
+var timer = function() {
+    var timerEl = document.querySelector("#timer");
+    timeLeft = 75;
+    timerEl.textContent = timeLeft;
+    var timeInterval = setInterval(function() {
+        if (timeLeft > 0) {
+            timerEl.textContent = timeLeft;
+            timeLeft--;
+        }
+        else {
+            timerEl.textContent = 0;
+            clearInterval(timeInterval);
+        }
+    }, 1000);
 };
 
 var submitScore = function() {

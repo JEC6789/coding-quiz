@@ -114,6 +114,5 @@ var submitScore = function() {
     scoreListEl.appendChild(scoreItemEl);
 };
 
-
 bodyEl.addEventListener("click", buttonHandler);
 formEl.addEventListener("submit", submitScore);

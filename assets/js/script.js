@@ -21,7 +21,10 @@ var finalScore = 0;
 var buttonHandler = function(event) {
     var targetEl = event.target;
 
-    if (targetEl.matches("#view-high-scores")) {
+    if (targetEl.matches("#view-high-scores") && (startingPageEl.className === "display-none" && highScoreEl.className === "display-none")) {
+        alert("Please finish your quiz and submit your score first. I don't feel like dealing with all the bugs that could result from you clicking this right now.");
+    }
+    else if (targetEl.matches("#view-high-scores")) {
         startingPageEl.className = "display-none";
         questionContainerEl.className = "display-none";
         highScoreEl.classList.remove("display-none");
@@ -77,6 +80,9 @@ var timer = function() {
         }
         else {
             timerEl.textContent = 0;
+            questionNumber = 1;
+            questionContainerEl.className = "display-none";
+            finishScreenEl.classList.remove("display-none");
             clearInterval(timeInterval);
         }
     }, 1000);
@@ -107,6 +113,7 @@ var submitScore = function() {
     scoreItemEl.textContent = scoreItem.name + " - " + scoreItem.score;
     scoreListEl.appendChild(scoreItemEl);
 };
+
 
 bodyEl.addEventListener("click", buttonHandler);
 formEl.addEventListener("submit", submitScore);

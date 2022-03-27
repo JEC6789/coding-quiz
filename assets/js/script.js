@@ -1,8 +1,10 @@
 var bodyEl = document.querySelector("body");
+var timerEl = document.querySelector("#timer");
 var startingPageEl = document.querySelector("#starting-page");
 var questionContainerEl = document.querySelector("#question-container");
 var checkAnswerEl = document.createElement("h2");
 var finishScreenEl = document.querySelector("#finish-screen");
+var scoreEl = document.querySelector("#score");
 var formEl = document.querySelector("#submit-score");
 var highScoreEl = document.querySelector("#high-scores");
 var questionContent = [
@@ -12,7 +14,9 @@ var questionContent = [
     "<h1>String values must be enclosed within ________ when being assigned to variables.</h1><ul><li class='wrong'>1. commas</li><li class='wrong'>2. curly brackets</li><li class='right'>3. quotes</li><li class='wrong'>4. parentheses</li></ul>",
     "<h1>A very useful tool used during development and debugging for printing content to the debugger is:</h1><ul><li class='wrong'>1. JavaScript</li><li class='wrong'>2. terminal / bash</li><li class='wrong'>3. for loops</li><li class='right'>4. console.log</li></ul>"
 ];
+var questionNumber = 1;
 var timeLeft = 0;
+var finalScore = 0;
 
 var buttonHandler = function(event) {
     var targetEl = event.target;
@@ -29,15 +33,22 @@ var buttonHandler = function(event) {
     else if (targetEl.matches("#start")) {
         startingPageEl.className = "display-none";
         questionContainerEl.classList.remove("display-none");
+        timeLeft = 75;
+        timerEl.textContent = timeLeft;
+        timer();
         quizHandler();
     }
     else if (targetEl.matches(".right")) {
         checkAnswerEl.remove();
+        questionNumber++;
+        quizHandler();
         checkAnswerEl.textContent = "Correct!";
         questionContainerEl.appendChild(checkAnswerEl);
     }
     else if (targetEl.matches(".wrong")) {
         checkAnswerEl.remove();
+        questionNumber++;
+        quizHandler();
         checkAnswerEl.textContent = "Wrong!";
         questionContainerEl.appendChild(checkAnswerEl);
         timeLeft = timeLeft - 10;
@@ -45,14 +56,20 @@ var buttonHandler = function(event) {
 };
 
 var quizHandler = function() {
-    timer();
-    questionContainerEl.innerHTML = questionContent[0];
+    if (questionNumber <= questionContent.length) {
+        questionContainerEl.innerHTML = questionContent[questionNumber - 1];
+    }
+    else {
+        finalScore = timeLeft;
+        timeLeft = 0;
+        questionNumber = 1;
+        questionContainerEl.className = "display-none";
+        finishScreenEl.classList.remove("display-none");
+        scoreEl.textContent = finalScore;
+    }
 };
 
 var timer = function() {
-    var timerEl = document.querySelector("#timer");
-    timeLeft = 75;
-    timerEl.textContent = timeLeft;
     var timeInterval = setInterval(function() {
         if (timeLeft > 0) {
             timerEl.textContent = timeLeft;
@@ -79,8 +96,11 @@ var submitScore = function() {
 
     var scoreItem = {
         name: nameInput,
-        //score: variableName
+        score: finalScore
     };
+
+    finishScreenEl.className = "display-none";
+    highScoreEl.classList.remove("display-none");
 
     var scoreItemEl = document.createElement("li");
     scoreItemEl.setAttribute("score", scoreItem.score);

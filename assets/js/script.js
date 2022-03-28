@@ -8,7 +8,6 @@ var scoreEl = document.querySelector("#score");
 var formEl = document.querySelector("#submit-score");
 var highScoreEl = document.querySelector("#high-scores");
 var scoreListEl = document.querySelector("#score-list");
-var scoreItemEl = document.createElement("li");
 var questionContent = [
     "<h1>Commonly used data types do not include:</h1><ul><li class='wrong'>1. strings</li><li class='right'>2. alerts</li><li class='wrong'>3. booleans</li><li class='wrong'>4. numbers</li></ul>",
     "<h1>The condition in an if / else statement is enclosed with ________.</h1><ul><li class='wrong'>1. quotes</li><li class='wrong'>2. curly brackets</li><li class='right'>3. parentheses</li><li class='wrong'>4. square brackets</li></ul>",
@@ -121,6 +120,7 @@ var submitScore = function() {
 };
 
 var createScoreItem = function(scoreItem) {
+    var scoreItemEl = document.createElement("li");
     scoreItemEl.setAttribute("score-id", scoreIdCounter);
     scoreItemEl.textContent = scoreItem.name + " - " + scoreItem.score;
     scoreListEl.appendChild(scoreItemEl);
